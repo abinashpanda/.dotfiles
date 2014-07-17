@@ -5,17 +5,22 @@
 " Written(W) 2014 Abinash Panda
 
 set encoding=utf-8
+set laststatus=2
+
+" Modify the behaviour of backspace
+set backspace=2
 
 " Runtime path manipulation for Pathogen
 execute pathogen#infect()
 
 " Airline Setup
-let g:airline_theme='molokai'
+let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
 
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#bufferline#overwrite_variables = 1
 let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tmuxline#enabled = 0
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -58,6 +63,10 @@ inoremap <C-n> :nohl<CR>
 noremap <C-P> <esc>:tabprevious<CR>
 noremap <C-N> <esc>:tabnext<CR>
 noremap <C-C> <esc>:tabnew<CR>
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
 
 " Quick quit command
 noremap <Leader>e :quit<CR>
