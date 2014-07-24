@@ -54,9 +54,9 @@ noremap <Leader>sv :source $MYVIMRC<cr>
 
 " Bind nohl
 " Removes highlight of your last search
-noremap <C-n> :nohl<CR>
-vnoremap <C-n> :nohl<CR>
-inoremap <C-n> :nohl<CR>
+noremap <Leader>n :nohl<CR>
+vnoremap <Leader>n :nohl<CR>
+inoremap <Leader>n :nohl<CR>
 
 " Easier moving between tabs
 " set similar to tmux configurations
