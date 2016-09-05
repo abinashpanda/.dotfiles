@@ -138,8 +138,7 @@ export SOFTWARES=$HOME/Softwares
 
 # Setting up JAVA_HOME
 export JDK_VERSION=jdk1.8.0_101
-export JAVA_HOME=$SOFTWARES/$JDK_VERSION/bin/
-
+export JAVA_HOME=$SOFTWARES/$JDK_VERSION/
 
 # Adding directories to the PATH
 # HADOOP
