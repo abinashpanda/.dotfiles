@@ -140,23 +140,6 @@ export SOFTWARES=$HOME/Softwares
 export JDK_VERSION=jdk1.8.0_101
 export JAVA_HOME=$SOFTWARES/$JDK_VERSION/
 
-# Adding directories to the PATH
-# HADOOP
-export PATH=$SOFTWARES/hadoop-1.2.1/bin/:$PATH
-# HIVE
-export PATH=$SOFTWARES/apache-hive-0.13.1-bin/bin:$PATH
-# EMR
-export PATH=$SOFTWARES/elastic-mapreduce-cli:$PATH
-# PIG
-export PATH=$SOFTWARES/pig-0.12.0/bin:$PATH
-# PyCharm
-export PATH=$SOFTWARES/pycharm-community-4.0.3/bin:$PATH
-# Conda
-export PATH=$HOME/anaconda3/bin:$PATH
-# NODE
-export NODE_VERSION=4.4.5 
-export PATH=$SOFTWARES/node-v4.4.5-linux-x64/bin/:$PATH
-
 # making vim the default editor for git
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -168,5 +151,3 @@ bind '"\e[B": history-search-forward'
 # Setting up bash_prompt according to virtualenv, branch status, etc
 . ~/.bash_prompt.sh
 
-# Setting up color theme for terminal
-source $SOFTWARES/base16-shell/base16-railscasts.dark.sh
