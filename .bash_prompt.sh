@@ -43,12 +43,15 @@ function set_git_branch {
   git_status="$(git status 2> /dev/null)"
 
   # Set color based on clean/staged/dirty.
-  if [[ ${git_status} =~ "working directory clean" ]]; then
+  if [[ ${git_status} =~ "working tree clean" ]]; then
     state="${GREEN}"
+	emoji="👍 "
   elif [[ ${git_status} =~ "Changes to be committed" ]]; then
     state="${YELLOW}"
+	emoji="🤔 "
   else
     state="${LIGHT_RED}"
+	emoji="🤞 "
   fi
 
   # Set arrow icon based on status against remote.
@@ -74,7 +77,7 @@ function set_git_branch {
   fi
 
   # Set the final branch string.
-  BRANCH="${state}(${branch})${remote}${COLOR_NONE} "
+  BRANCH="${state}<${branch} ${emoji}/>${remote}${COLOR_NONE} "
 }
 
 # Return the prompt symbol to use, colorized based on the return value of the
@@ -114,9 +117,13 @@ function set_bash_prompt () {
 
   # Set the bash prompt variable.
   PS1="
-${PYTHON_VIRTUALENV}${GREEN}\u@\h ${YELLOW}\w${COLOR_NONE} ${BRANCH}
-${PROMPT_SYMBOL} "
+${PYTHON_VIRTUALENV}${GREEN}\u@\h ${YELLOW} \w${COLOR_NONE} ${BRANCH}
+👉  "
 }
 
 # Tell bash to execute this function just before displaying its prompt.
 PROMPT_COMMAND=set_bash_prompt
+
+if [ -f ~/.git-completion.bash ]; then
+	. ~/.git-completion.bash
+fi
