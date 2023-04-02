@@ -5,7 +5,14 @@ This repository consists of configuration files for :
 
 * `nvim`: `nvim/init.vim`
 * `tmux` : `.tmux.conf`
-* `fish`: `fish`
+* `zsh` : `.zshrc`
+
+## Zsh
+
+1. Setup [ohmyzsh](https://ohmyz.sh/)
+2. Install [starship](https://starship.rs/)
+3. Install [base16-themes](https://github.com/tinted-theming/base16-shell#bashzsh)
+4. Install [nvm](https://github.com/nvm-sh/nvm)
 
 ## Neovim
 
