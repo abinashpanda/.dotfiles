@@ -19,18 +19,6 @@ This repository consists of configuration files for :
 ### Install neovim
 Follow the instructions [over here](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 
-### Install Vim Plug
-Install `vim-plug` using the instructions [over here](https://github.com/junegunn/vim-plug#neovim)
-
-### Configuring `nvim`
-
-* Copy the `nvim/init.vim` to `~/.config/nvim/` directory (if present, else create it).
-* Open `nvim` and run `:PlugInstall` to install all the plugins
-* Install the following **coc-plugins** using
-```vim
-:CocInstall coc-json coc-tssserver coc-graphql coc-eslint coc-prettier coc-python
-```
-
 ### Adding `nvm`
 
 Using [nvm.fish](https://github.com/jorgebucaran/nvm.fish).
@@ -44,6 +32,10 @@ their respective directories after install `nvm`.
 
 Install `tmux` for you OS using the instructions [over
 here](https://github.com/tmux/tmux/wiki/Installing)
+
+### Install TPM
+
+Install tmux [plugin manager (TPM)](https://github.com/tmux-plugins/tpm) to install the plugins
 
 ### Configuring `tmux`
 
