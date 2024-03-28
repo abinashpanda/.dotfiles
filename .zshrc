@@ -10,7 +10,9 @@ alias vim="nvim"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="af-magic"
+# ZSH_THEME="eastwood"
+# ZSH_THEME="awesomepanda"
+ZSH_THEME="local-agnoster"
 
 # Download Znap, if it's not there yet.
 [[ -f ~/Git/zsh-snap/znap.zsh ]] ||
@@ -23,6 +25,8 @@ source ~/Git/zsh-snap/znap.zsh  # Start Znap
 znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
+
+bindkey '^I' autosuggest-accept
 
 # `znap eval` caches and runs any kind of command output for you.
 znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
@@ -40,8 +44,7 @@ source $ZSH/oh-my-zsh.sh
 
 export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+path+=($ANDROID_HOME/emulator $ANDROID_HOME/platform-tools)
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -69,3 +72,19 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+export BUN_INSTALL=$HOME/.bun
+export PATH=$PATH:$BUN_INSTALL/bin
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/abinashpanda/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/abinashpanda/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/abinashpanda/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/abinashpanda/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+path+=($HOME/Softwares/)
+
+eval "$(zoxide init zsh)"
+
+# Add installed go packages in path
+path+=($HOME/go/bin)
