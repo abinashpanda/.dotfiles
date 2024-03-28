@@ -1,6 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
+    lazy = false,
     -- event = 'BufWritePre' -- uncomment for format on save
     config = function()
       require "configs.conform"
@@ -25,7 +26,9 @@ return {
         "css-lsp",
         "prettier",
         "gopls",
-        "eslint-lsp"
+        "eslint-lsp",
+        "pyright",
+        "black",
       },
     },
   },
@@ -41,5 +44,27 @@ return {
         "css",
       },
     },
+  },
+
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    config = function()
+      require("telescope").setup {
+        extensions = {
+          ["ui-select"] = {},
+        },
+      }
+
+      require("telescope").load_extension "ui-select"
+    end,
+  },
+
+  {
+    "github/copilot.vim",
+    lazy = false,
   },
 }
