@@ -6,6 +6,7 @@ local options = {
     python = { "isort", "black" },
     sh = { "shfmt" },
     zsh = { "shfmt" },
+    markdown = { "prettierd", "prettier" },
   },
 
   format_on_save = {

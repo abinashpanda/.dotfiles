@@ -47,20 +47,33 @@ return {
   },
 
   {
-    "nvim-telescope/telescope-ui-select.nvim",
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-ui-select.nvim",
+    },
+    opts = {
+      extensions = {
+        ["ui-select"] = {},
+      },
+      extensions_list = {
+        "ui-select",
+      },
+      pickers = {
+        find_files = {
+          hidden = true,
+        },
+      },
+    },
   },
 
   {
-    "nvim-telescope/telescope.nvim",
-    config = function()
-      require("telescope").setup {
-        extensions = {
-          ["ui-select"] = {},
-        },
-      }
-
-      require("telescope").load_extension "ui-select"
-    end,
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      git = {
+        enable = true,
+        ignore = false,
+      },
+    },
   },
 
   {
