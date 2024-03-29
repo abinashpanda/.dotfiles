@@ -3,7 +3,9 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
-    python = { "black" },
+    python = { "isort", "black" },
+    sh = { "shfmt" },
+    zsh = { "shfmt" },
   },
 
   format_on_save = {
