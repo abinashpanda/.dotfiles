@@ -59,9 +59,7 @@ return {
         "ui-select",
       },
       pickers = {
-        find_files = {
-          hidden = true,
-        },
+        find_files = {},
       },
     },
   },
