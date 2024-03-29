@@ -75,7 +75,7 @@ Linux)
 	;;
 Darwin)
 	# Set JAVA_HOME for macOS
-	export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+	export JAVA_HOME="$HOME/Applications/Android Studio.app/Contents/jbr/Contents/Home"
 	;;
 esac
 
