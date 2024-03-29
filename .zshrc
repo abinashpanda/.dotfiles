@@ -36,16 +36,16 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # >>> conda initialize >>>
-export MINCONDA_HOME=$HOME/miniconda3
+export MINICONDA_HOME=$HOME/miniconda3
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$("$MINCONDA_HOME", '/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+__conda_setup="$("$MINICONDA_HOME", '/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
 	eval "$__conda_setup"
 else
-	if [ -f "$MINCONDA_HOME/etc/profile.d/conda.sh" ]; then
-		. "$MINCONDA_HOME/etc/profile.d/conda.sh"
+	if [ -f "$MINICONDA_HOME/etc/profile.d/conda.sh" ]; then
+		. "$MINICONDA_HOME/etc/profile.d/conda.sh"
 	else
-		export PATH="$MINCONDA_HOME/bin:$PATH"
+		export PATH="$MINICONDA_HOME/bin:$PATH"
 	fi
 fi
 conda activate base # activate the base environment on setup
@@ -109,3 +109,5 @@ export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+export LANG=en_US.UTF-8
