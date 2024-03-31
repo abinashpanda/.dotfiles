@@ -24,6 +24,7 @@ return {
         "stylua",
         "html-lsp",
         "css-lsp",
+        "typescript-language-server",
         "prettier",
         "gopls",
         "eslint-lsp",
