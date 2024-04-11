@@ -7,6 +7,7 @@ local options = {
     sh = { "shfmt" },
     zsh = { "shfmt" },
     markdown = { "prettierd", "prettier" },
+    go = { "gofmt", "gofumpt" },
   },
 
   format_on_save = {

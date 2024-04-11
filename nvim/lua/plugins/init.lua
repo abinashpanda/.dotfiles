@@ -24,6 +24,8 @@ return {
         "stylua",
         "html-lsp",
         "css-lsp",
+        "typescript-language-server",
+        "tailwindcss-language-server",
         "prettier",
         "gopls",
         "eslint-lsp",
@@ -42,6 +44,10 @@ return {
         "vimdoc",
         "html",
         "css",
+        "tsx",
+        "javascript",
+        "typescript",
+        "go",
       },
     },
   },
@@ -78,5 +84,18 @@ return {
   {
     "github/copilot.vim",
     lazy = false,
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    ft = {
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+    },
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
   },
 }
