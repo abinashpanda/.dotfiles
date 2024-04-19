@@ -54,6 +54,7 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
+    lazy = false,
     dependencies = {
       "nvim-telescope/telescope-ui-select.nvim",
     },
