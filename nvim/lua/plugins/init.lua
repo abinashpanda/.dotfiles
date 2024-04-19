@@ -97,4 +97,18 @@ return {
       require("nvim-ts-autotag").setup()
     end,
   },
+
+  {
+    "numToStr/FTerm.nvim",
+    lazy = false,
+    config = function()
+      require("FTerm").setup {
+        border = "double",
+        dimensions = {
+          height = 0.9,
+          width = 0.9,
+        },
+      }
+    end,
+  },
 }
