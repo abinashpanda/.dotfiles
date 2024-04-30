@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/usr/share/themes/Numix'
-let g:netrw_dirhist_2='/home/abinash/examples/shogun/gist7d84358f63babc4a5fbf-cea218ceb3aea9bebcdcbb185e7742023e914c34'
-let g:netrw_dirhist_3='/home/abinash/shogun/examples/undocumented/libshogun'
-let g:netrw_dirhist_4='/home/abinash/pgmpy/__pycache__'
-let g:netrw_dirhist_5='/home/abinash/tutorial/git_tutorial'
-let g:netrw_dirhist_6='/home/abinash/shogun/src/shogun'
-let g:netrw_dirhist_7='/home/abinash/shogun/src/interfaces/modular'
