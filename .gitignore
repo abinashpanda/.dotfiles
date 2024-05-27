@@ -3,3 +3,6 @@ tmux/plugins
 
 # nvim
 nvim/lazy-lock.json
+
+# alacritty themes
+alacritty/themes
