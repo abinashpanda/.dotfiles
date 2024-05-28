@@ -126,4 +126,4 @@ export FZF_CTRL_T_OPTS="
 export LANG=en_US.UTF-8
 
 # sst
-export PATH=/Users/abinashpanda/.sst/bin:$PATH
+export PATH=$PATH:$HOME/.sst/bin
