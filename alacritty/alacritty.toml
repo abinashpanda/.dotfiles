@@ -4,18 +4,16 @@ import = [
 
 [window]
 
-opacity = 0.3
+opacity = 0.9
 blur = true
 padding.x = 4
 padding.y = 4
 
 
-decorations = "Full"
+decorations = "Buttonless"
 
 [font]
 
 normal.family = "CaskaydiaCove Nerd Font"
-offset.y = 2
-glyph_offset.y = 1
 
-size = 13.0
+size = 10

@@ -6,3 +6,6 @@ nvim/lazy-lock.json
 
 # alacritty themes
 alacritty/themes
+
+# custom zsh theme
+*.zwc
