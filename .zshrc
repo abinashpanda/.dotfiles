@@ -38,34 +38,37 @@ source $ZSH/oh-my-zsh.sh
 # >>> conda initialize >>>
 export MINICONDA_HOME=$HOME/miniconda3
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$("$MINICONDA_HOME", '/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+__conda_setup="$('$MINICONDA_HOME/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-	eval "$__conda_setup"
+    eval "$__conda_setup"
 else
-	if [ -f "$MINICONDA_HOME/etc/profile.d/conda.sh" ]; then
-		. "$MINICONDA_HOME/etc/profile.d/conda.sh"
-	else
-		export PATH="$MINICONDA_HOME/bin:$PATH"
-	fi
+    if [ -f "$MINICONDA_HOME/etc/profile.d/conda.sh" ]; then
+        . "$MINICONDA_HOME/etc/profile.d/conda.sh"
+    else
+        export PATH="$MINICONDA_HOME/bin:$PATH"
+    fi
 fi
-conda activate base # activate the base environment on setup
 unset __conda_setup
 # <<< conda initialize <<<
+# activate base environment by default
+conda activate base
 
 # NVM Setup
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
 # Go libraries
 export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:/usr/local/go/bin
 
 # Java
 case "$(uname -s)" in
@@ -89,6 +92,9 @@ if command -v batcat >/dev/null 2>&1; then
 	alias cat='batcat'
 fi
 
+# bin
+export PATH=$PATH:$HOME/.local/bin
+
 # use eza for ls
 if command -v eza >/dev/null 2>&1; then
   alias ls='eza --icons=always --color=always'
@@ -97,13 +103,15 @@ fi
 # zoxide setup
 eval "$(zoxide init zsh)"
 
+# neovim setup
+export PATH=$PATH:/opt/nvim-linux64/bin
+export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
+alias vim=nvim
+
+
 # pulumi setup
 export PATH=$PATH:$HOME/.pulumi/bin
 
-# neovim setup using bob
-export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
-# Use neovim
-alias vim="nvim"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
