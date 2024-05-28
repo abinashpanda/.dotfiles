@@ -95,6 +95,11 @@ fi
 # bin
 export PATH=$PATH:$HOME/.local/bin
 
+# use eza for ls
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza --icons=always --color=always'
+fi
+
 # zoxide setup
 eval "$(zoxide init zsh)"
 
@@ -119,3 +124,6 @@ export FZF_CTRL_T_OPTS="
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
 export LANG=en_US.UTF-8
+
+# sst
+export PATH=/Users/abinashpanda/.sst/bin:$PATH
