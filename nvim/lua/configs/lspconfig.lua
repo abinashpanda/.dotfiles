@@ -52,6 +52,12 @@ lspconfig.pyright.setup {
   end,
 }
 
+lspconfig.prismals.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+}
+
 -- hello-lsp
 -- local client = vim.lsp.start_client {
 --   name = "hello-lsp",
