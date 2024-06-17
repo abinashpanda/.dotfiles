@@ -8,9 +8,8 @@ opacity = 0.9
 blur = true
 padding.x = 4
 padding.y = 4
-
-
 decorations = "Buttonless"
+startup_mode = "Maximized"
 
 [font]
 
