@@ -127,3 +127,6 @@ export LANG=en_US.UTF-8
 
 # sst
 export PATH=$PATH:$HOME/.sst/bin
+
+# eksctl
+fpath=($fpath ~/.zsh/completion)
