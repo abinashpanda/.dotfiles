@@ -50,6 +50,7 @@ return {
         "typescript",
         "go",
         "prisma",
+        "just",
       },
     },
   },
