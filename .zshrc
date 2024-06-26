@@ -128,5 +128,8 @@ export LANG=en_US.UTF-8
 # sst
 export PATH=$PATH:$HOME/.sst/bin
 
+# kubectl
+export KUBE_EDITOR=nvim
+
 # eksctl
 fpath=($fpath ~/.zsh/completion)
