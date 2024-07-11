@@ -11,8 +11,8 @@ ZSH_THEME="local-agnoster"
 
 # Download Znap, if it's not there yet.
 [[ -f ~/Git/zsh-snap/znap.zsh ]] ||
-	git clone --depth 1 -- \
-		https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
+  git clone --depth 1 -- \
+    https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
 
 source ~/Git/zsh-snap/znap.zsh # Start Znap
 
@@ -26,11 +26,11 @@ znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
 
 BASE16_SHELL_PATH="$HOME/.config/base16-shell"
 [ -n "$PS1" ] &&
-	[ -s "$BASE16_SHELL_PATH/profile_helper.sh" ] &&
-	source "$BASE16_SHELL_PATH/profile_helper.sh"
+  [ -s "$BASE16_SHELL_PATH/profile_helper.sh" ] &&
+  source "$BASE16_SHELL_PATH/profile_helper.sh"
 
 plugins=(
-	git
+  git
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -38,15 +38,15 @@ source $ZSH/oh-my-zsh.sh
 # >>> conda initialize >>>
 export MINICONDA_HOME=$HOME/miniconda3
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$MINICONDA_HOME/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('$MINICONDA_HOME/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+  eval "$__conda_setup"
 else
-    if [ -f "$MINICONDA_HOME/etc/profile.d/conda.sh" ]; then
-        . "$MINICONDA_HOME/etc/profile.d/conda.sh"
-    else
-        export PATH="$MINICONDA_HOME/bin:$PATH"
-    fi
+  if [ -f "$MINICONDA_HOME/etc/profile.d/conda.sh" ]; then
+    . "$MINICONDA_HOME/etc/profile.d/conda.sh"
+  else
+    export PATH="$MINICONDA_HOME/bin:$PATH"
+  fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
@@ -56,13 +56,13 @@ conda activate base
 # NVM Setup
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
@@ -73,13 +73,13 @@ export PATH=$PATH:/usr/local/go/bin
 # Java
 case "$(uname -s)" in
 Linux)
-	# Set JAVA_HOME for Linux
-	export JAVA_HOME="/usr/lib/jvm/java-20-openjdk-amd64"
-	;;
+  # Set JAVA_HOME for Linux
+  export JAVA_HOME="/usr/lib/jvm/java-20-openjdk-amd64"
+  ;;
 Darwin)
-	# Set JAVA_HOME for macOS
-	export JAVA_HOME="$HOME/Applications/Android Studio.app/Contents/jbr/Contents/Home"
-	;;
+  # Set JAVA_HOME for macOS
+  export JAVA_HOME="$HOME/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+  ;;
 esac
 
 # Android Studio
@@ -89,7 +89,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # use batcat for cat
 if command -v batcat >/dev/null 2>&1; then
-	alias cat='batcat'
+  alias cat='batcat'
 fi
 
 # bin
@@ -108,10 +108,8 @@ export PATH=$PATH:/opt/nvim-linux64/bin
 export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
 alias vim=nvim
 
-
 # pulumi setup
 export PATH=$PATH:$HOME/.pulumi/bin
-
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -122,6 +120,7 @@ export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+source <(fzf --zsh)
 
 export LANG=en_US.UTF-8
 
@@ -131,5 +130,5 @@ export PATH=$PATH:$HOME/.sst/bin
 # kubectl
 export KUBE_EDITOR=nvim
 
-# eksctl
+# autocompletions
 fpath=($fpath ~/.zsh/completion)
