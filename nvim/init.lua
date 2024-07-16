@@ -32,6 +32,9 @@ require("lazy").setup({
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
+-- enable transparency
+require("base46").toggle_transparency()
+
 require "nvchad.autocmds"
 
 vim.schedule(function()
