@@ -127,4 +127,9 @@ return {
     },
     config = true,
   },
+
+  {
+    "fladson/vim-kitty",
+    lazy = false,
+  },
 }
