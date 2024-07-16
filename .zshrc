@@ -133,3 +133,7 @@ export KUBE_EDITOR=nvim
 
 # eksctl
 fpath=($fpath ~/.zsh/completion)
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+if [ -e /home/abinash/.nix-profile/etc/profile.d/nix.sh ]; then . /home/abinash/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
