@@ -1,3 +1,5 @@
+export LANG=en_US.UTF-8
+
 if [ "$TMUX" = "" ]; then tmux -u; fi
 
 # Path to your oh-my-zsh installation.
@@ -31,6 +33,8 @@ BASE16_SHELL_PATH="$HOME/.config/base16-shell"
 
 plugins=(
   git
+  colored-man-pages
+  docker
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -87,11 +91,6 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-# use batcat for cat
-if command -v batcat >/dev/null 2>&1; then
-  alias cat='batcat'
-fi
-
 # bin
 export PATH=$PATH:$HOME/.local/bin
 
@@ -101,24 +100,27 @@ if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
 fi
 
 # use eza for ls
-if command -v eza >/dev/null 2>&1; then
+if command -v eza &>/dev/null; then
   alias ls='eza --icons=always --color=always --long'
+fi
+
+# use nvim for vim
+if command -v nvim &>/dev/null; then
+  alias vim='nvim'
+fi
+
+# use bat for cat
+if command -v bat &>/dev/null; then
+  alias cat='bat'
 fi
 
 # zoxide setup
 eval "$(zoxide init zsh)"
 
-# neovim setup
-export PATH=$PATH:/opt/nvim-linux64/bin
-export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
-alias vim=nvim
-
-# pulumi setup
-export PATH=$PATH:$HOME/.pulumi/bin
-
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
 # fzf options
 export FZF_CTRL_T_OPTS="
@@ -126,8 +128,6 @@ export FZF_CTRL_T_OPTS="
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 source <(fzf --zsh)
-
-export LANG=en_US.UTF-8
 
 # sst
 export PATH=$PATH:$HOME/.sst/bin
@@ -139,4 +139,4 @@ export KUBE_EDITOR=nvim
 fpath=($fpath ~/.zsh/completion)
 
 # nix shell
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
