@@ -17,9 +17,9 @@ ZSH_THEME="local-agnoster"
 source ~/Git/zsh-snap/znap.zsh # Start Znap
 
 # `znap source` automatically downloads and starts your plugins.
-znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
+znap source marlonrichert/zsh-autocomplete
 
 # `znap eval` caches and runs any kind of command output for you.
 znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
@@ -95,9 +95,14 @@ fi
 # bin
 export PATH=$PATH:$HOME/.local/bin
 
+# brew
+if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # use eza for ls
 if command -v eza >/dev/null 2>&1; then
-  alias ls='eza --icons=always --color=always'
+  alias ls='eza --icons=always --color=always --long'
 fi
 
 # zoxide setup
@@ -133,6 +138,5 @@ export KUBE_EDITOR=nvim
 # autocompletions
 fpath=($fpath ~/.zsh/completion)
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-if [ -e /home/abinash/.nix-profile/etc/profile.d/nix.sh ]; then . /home/abinash/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# nix shell
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
