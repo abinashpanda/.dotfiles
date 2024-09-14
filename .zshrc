@@ -1,7 +1,5 @@
 export LANG=en_US.UTF-8
 
-if [ "$TMUX" = "" ]; then tmux -u; fi
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -98,6 +96,8 @@ export PATH=$PATH:$HOME/.local/bin
 if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+if [ "$TMUX" = "" ]; then tmux -u; fi
 
 # use eza for ls
 if command -v eza &>/dev/null; then
