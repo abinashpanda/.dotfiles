@@ -7,7 +7,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="local-agnoster"
+# ZSH_THEME="local-agnoster"
+ZSH_THEME="af-magic"
 
 # Download Znap, if it's not there yet.
 [[ -f ~/Git/zsh-snap/znap.zsh ]] ||
@@ -102,11 +103,6 @@ if [ "$TMUX" = "" ]; then tmux -u; fi
 # use eza for ls
 if command -v eza &>/dev/null; then
   alias ls='eza --icons=always --color=always --long'
-fi
-
-# use nvim for vim
-if command -v nvim &>/dev/null; then
-  alias vim='nvim'
 fi
 
 # use bat for cat
