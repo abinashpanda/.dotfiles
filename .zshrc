@@ -133,6 +133,11 @@ export KUBE_EDITOR=nvim
 
 # autocompletions
 fpath=($fpath ~/.zsh/completion)
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+if command -v aws_completer &>/dev/null; then
+  complete -C '$(which aws_completer)' aws
+fi
 
 # nix shell
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
