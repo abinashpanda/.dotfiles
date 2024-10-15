@@ -1,14 +1,17 @@
 export LANG=en_US.UTF-8
 
+# brew
+if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+if [ "$TMUX" = "" ]; then tmux -u; fi
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="local-agnoster"
-ZSH_THEME="af-magic"
+ZSH_THEME="catppuccin"
+CATPPUCCIN_FLAVOR="mocha"
 
 # Download Znap, if it's not there yet.
 [[ -f ~/Git/zsh-snap/znap.zsh ]] ||
@@ -21,14 +24,6 @@ source ~/Git/zsh-snap/znap.zsh # Start Znap
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
 znap source marlonrichert/zsh-autocomplete
-
-# `znap eval` caches and runs any kind of command output for you.
-znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
-
-BASE16_SHELL_PATH="$HOME/.config/base16-shell"
-[ -n "$PS1" ] &&
-  [ -s "$BASE16_SHELL_PATH/profile_helper.sh" ] &&
-  source "$BASE16_SHELL_PATH/profile_helper.sh"
 
 plugins=(
   git
@@ -93,13 +88,6 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # bin
 export PATH=$PATH:$HOME/.local/bin
 
-# brew
-if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-if [ "$TMUX" = "" ]; then tmux -u; fi
-
 # use eza for ls
 if command -v eza &>/dev/null; then
   alias ls='eza --icons=always --color=always --long'
@@ -117,6 +105,9 @@ eval "$(zoxide init zsh)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+
+# Deno
+if [ -d $HOME/.deno ]; then . $HOME/.deno/env; fi
 
 # fzf options
 export FZF_CTRL_T_OPTS="
@@ -141,7 +132,3 @@ fi
 
 # nix shell
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
-
-if command -v starship &>/dev/null; then
-  eval "$(starship init zsh)"
-fi
