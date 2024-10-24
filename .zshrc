@@ -131,3 +131,7 @@ fi
 
 # nix shell
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
+
+# atuin setup
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"
