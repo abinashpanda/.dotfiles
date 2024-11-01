@@ -1,5 +1,10 @@
 export LANG=en_US.UTF-8
 
+# brew
+if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -76,7 +81,7 @@ export PATH=$PATH:/usr/local/go/bin
 case "$(uname -s)" in
 Linux)
   # Set JAVA_HOME for Linux
-  export JAVA_HOME="/usr/lib/jvm/java-20-openjdk-amd64"
+  export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
   ;;
 Darwin)
   # Set JAVA_HOME for macOS
@@ -91,11 +96,6 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # bin
 export PATH=$PATH:$HOME/.local/bin
-
-# brew
-if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
 
 if [ "$TMUX" = "" ]; then tmux -u; fi
 
