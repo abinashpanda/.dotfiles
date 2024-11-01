@@ -8,11 +8,7 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="local-agnoster"
+ZSH_THEME="af-magic"
 
 # Download Znap, if it's not there yet.
 [[ -f ~/Git/zsh-snap/znap.zsh ]] ||
@@ -25,14 +21,6 @@ source ~/Git/zsh-snap/znap.zsh # Start Znap
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
 znap source marlonrichert/zsh-autocomplete
-
-# `znap eval` caches and runs any kind of command output for you.
-znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
-
-BASE16_SHELL_PATH="$HOME/.config/base16-shell"
-[ -n "$PS1" ] &&
-  [ -s "$BASE16_SHELL_PATH/profile_helper.sh" ] &&
-  source "$BASE16_SHELL_PATH/profile_helper.sh"
 
 plugins=(
   git
@@ -104,11 +92,6 @@ if command -v eza &>/dev/null; then
   alias ls='eza --icons=always --color=always --long'
 fi
 
-# use nvim for vim
-if command -v nvim &>/dev/null; then
-  alias vim='nvim'
-fi
-
 # use bat for cat
 if command -v bat &>/dev/null; then
   alias cat='bat'
@@ -121,6 +104,9 @@ eval "$(zoxide init zsh)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+
+# Deno
+if [ -d $HOME/.deno ]; then . $HOME/.deno/env; fi
 
 # fzf options
 export FZF_CTRL_T_OPTS="
@@ -137,6 +123,15 @@ export KUBE_EDITOR=nvim
 
 # autocompletions
 fpath=($fpath ~/.zsh/completion)
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+if command -v aws_completer &>/dev/null; then
+  complete -C '$(which aws_completer)' aws
+fi
 
 # nix shell
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
+
+# atuin setup
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"
