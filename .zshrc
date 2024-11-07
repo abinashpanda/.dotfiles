@@ -25,7 +25,6 @@ znap source marlonrichert/zsh-autocomplete
 plugins=(
   git
   colored-man-pages
-  docker
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -135,3 +134,6 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc
 # atuin setup
 if [ -d $HOME/.atuin ]; then . $HOME/.atuin/bin/env; fi
 eval "$(atuin init zsh)"
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
