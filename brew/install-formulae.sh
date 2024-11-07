@@ -13,6 +13,7 @@ formulae=(
   "tmux"
   "xh"
   "zoxide"
+  "atuin"
 )
 
 for formula in "${formulae[@]}"; do
