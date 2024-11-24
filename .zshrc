@@ -84,8 +84,6 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # bin
 export PATH=$PATH:$HOME/.local/bin
 
-if [ "$TMUX" = "" ]; then tmux -u; fi
-
 # use eza for ls
 if command -v eza &>/dev/null; then
   alias ls='eza --icons=always --color=always --long'
@@ -139,3 +137,5 @@ eval "$(atuin init zsh)"
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+if [ "$TMUX" = "" ]; then tmux -u; fi
