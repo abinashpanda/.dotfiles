@@ -17,6 +17,7 @@ formulae=(
   "hyperfine"
   "glow"
   "gum"
+  "jq"
 )
 
 for formula in "${formulae[@]}"; do
