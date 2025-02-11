@@ -2,7 +2,6 @@
 
 formulae=(
   "bat"
-  "btop"
   "caddy"
   "eza"
   "fzf"
