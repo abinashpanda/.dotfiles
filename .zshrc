@@ -8,7 +8,7 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="af-magic"
+ZSH_THEME="robbyrussell"
 
 # Download Znap, if it's not there yet.
 [[ -f ~/Git/zsh-snap/znap.zsh ]] ||
@@ -18,9 +18,7 @@ ZSH_THEME="af-magic"
 source ~/Git/zsh-snap/znap.zsh # Start Znap
 
 # `znap source` automatically downloads and starts your plugins.
-znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
-znap source marlonrichert/zsh-autocomplete
 
 plugins=(
   git
@@ -50,7 +48,6 @@ conda activate base
 # NVM Setup
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -118,14 +115,6 @@ export PATH=$PATH:$HOME/.sst/bin
 # kubectl
 export KUBE_EDITOR=nvim
 
-# autocompletions
-fpath=($fpath ~/.zsh/completion)
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
-if command -v aws_completer &>/dev/null; then
-  complete -C '$(which aws_completer)' aws
-fi
-
 # nix shell
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 
@@ -133,9 +122,5 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc
 if [ -d $HOME/.atuin ]; then . $HOME/.atuin/bin/env; fi
 eval "$(atuin init zsh)"
 
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
-
 if [ "$TMUX" = "" ]; then tmux -u; fi
+
