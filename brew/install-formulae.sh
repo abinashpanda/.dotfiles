@@ -1,6 +1,7 @@
 #!/bin/bash
 
 formulae=(
+  "typewritten"
   "bat"
   "caddy"
   "eza"

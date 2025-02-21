@@ -8,7 +8,10 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+autoload -U promptinit
+promptinit
+prompt typewritten
+export TYPEWRITTEN_PROMPT_LAYOUT="pure_verbose"
 
 # Download Znap, if it's not there yet.
 [[ -f ~/Git/zsh-snap/znap.zsh ]] ||
@@ -123,4 +126,3 @@ if [ -d $HOME/.atuin ]; then . $HOME/.atuin/bin/env; fi
 eval "$(atuin init zsh)"
 
 if [ "$TMUX" = "" ]; then tmux -u; fi
-
