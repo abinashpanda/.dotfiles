@@ -30,6 +30,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+if command -v conda &>/dev/null; then
 # >>> conda initialize >>>
 export MINICONDA_HOME=$HOME/miniconda3
 # !! Contents within this block are managed by 'conda init' !!
@@ -47,6 +48,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 # activate base environment by default
 conda activate base
+fi
 
 # NVM Setup
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
