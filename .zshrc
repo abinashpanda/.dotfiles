@@ -8,10 +8,7 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-autoload -U promptinit
-promptinit
-prompt typewritten
-export TYPEWRITTEN_PROMPT_LAYOUT="pure_verbose"
+ZSH_THEME="robbyrussell"
 
 # Download Znap, if it's not there yet.
 [[ -f ~/Git/zsh-snap/znap.zsh ]] ||
@@ -22,6 +19,9 @@ source ~/Git/zsh-snap/znap.zsh # Start Znap
 
 # `znap source` automatically downloads and starts your plugins.
 znap source zsh-users/zsh-syntax-highlighting
+znap source marlonrichert/zsh-autocomplete
+znap source zsh-users/zsh-autosuggestions
+zstyle ':autocomplete:*' min-input 3
 
 plugins=(
   git
@@ -31,23 +31,23 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 if command -v conda &>/dev/null; then
-# >>> conda initialize >>>
-export MINICONDA_HOME=$HOME/miniconda3
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$MINICONDA_HOME/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-if [ $? -eq 0 ]; then
-  eval "$__conda_setup"
-else
-  if [ -f "$MINICONDA_HOME/etc/profile.d/conda.sh" ]; then
-    . "$MINICONDA_HOME/etc/profile.d/conda.sh"
+  # >>> conda initialize >>>
+  export MINICONDA_HOME=$HOME/miniconda3
+  # !! Contents within this block are managed by 'conda init' !!
+  __conda_setup="$('$MINICONDA_HOME/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+  if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
   else
-    export PATH="$MINICONDA_HOME/bin:$PATH"
+    if [ -f "$MINICONDA_HOME/etc/profile.d/conda.sh" ]; then
+      . "$MINICONDA_HOME/etc/profile.d/conda.sh"
+    else
+      export PATH="$MINICONDA_HOME/bin:$PATH"
+    fi
   fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-# activate base environment by default
-conda activate base
+  unset __conda_setup
+  # <<< conda initialize <<<
+  # activate base environment by default
+  conda activate base
 fi
 
 # NVM Setup
@@ -103,6 +103,8 @@ eval "$(zoxide init zsh)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+# completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # Deno
 if [ -d $HOME/.deno ]; then . $HOME/.deno/env; fi
@@ -127,4 +129,6 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc
 if [ -d $HOME/.atuin ]; then . $HOME/.atuin/bin/env; fi
 eval "$(atuin init zsh)"
 
-if [ "$TMUX" = "" ]; then tmux -u; fi
+# Temporarily disabling tmux as I am trying out zellij
+# if [ "$TMUX" = "" ]; then tmux -u; fi
+eval "$(zellij setup --generate-auto-start zsh)"
