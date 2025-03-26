@@ -110,10 +110,6 @@ export PATH=$BUN_INSTALL/bin:$PATH
 if [ -d $HOME/.deno ]; then . $HOME/.deno/env; fi
 
 # fzf options
-export FZF_CTRL_T_OPTS="
-  --walker-skip .git,node_modules,target
-  --preview 'bat -n --color=always {}'
-  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 source <(fzf --zsh)
 
 # sst
