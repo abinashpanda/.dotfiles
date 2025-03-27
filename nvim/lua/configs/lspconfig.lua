@@ -57,22 +57,3 @@ lspconfig.prismals.setup {
   on_init = on_init,
   capabilities = capabilities,
 }
-
--- hello-lsp
--- local client = vim.lsp.start_client {
---   name = "hello-lsp",
---   cmd = { "/Users/abinashpanda/Projects/hello-lsp/main" },
---   on_attach = on_attach,
--- }
---
--- if not client then
---   vim.notify "error starting client"
---   return
--- end
---
--- vim.api.nvim_create_autocmd("Filetype", {
---   pattern = "markdown",
---   callback = function()
---     vim.lsp.buf_attach_client(0, client)
---   end,
--- })

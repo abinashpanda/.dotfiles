@@ -32,6 +32,7 @@ return {
         "pyright",
         "black",
         "prisma-language-server",
+        "nil",
       },
     },
   },
