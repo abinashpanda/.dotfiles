@@ -111,6 +111,8 @@ if [ -d $HOME/.deno ]; then . $HOME/.deno/env; fi
 
 # fzf options
 source <(fzf --zsh)
+export FZF_CTRL_T_COMMAND=
+export FZF_ALT_C_COMMAND=
 
 # sst
 export PATH=$PATH:$HOME/.sst/bin
