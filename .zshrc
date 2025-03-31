@@ -19,9 +19,7 @@ source ~/Git/zsh-snap/znap.zsh # Start Znap
 
 # `znap source` automatically downloads and starts your plugins.
 znap source zsh-users/zsh-syntax-highlighting
-znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-autosuggestions
-zstyle ':autocomplete:*' min-input 3
 
 plugins=(
   git
@@ -30,23 +28,21 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-if command -v conda &>/dev/null; then
-  # >>> conda initialize >>>
-  export MINICONDA_HOME=$HOME/miniconda3
-  # !! Contents within this block are managed by 'conda init' !!
-  __conda_setup="$('$MINICONDA_HOME/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-  if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+# >>> conda initialize >>>
+export MINICONDA_HOME=$HOME/miniconda3
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('$MINICONDA_HOME/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+if [ $? -eq 0 ]; then
+  eval "$__conda_setup"
+else
+  if [ -f "$MINICONDA_HOME/etc/profile.d/conda.sh" ]; then
+    . "$MINICONDA_HOME/etc/profile.d/conda.sh"
   else
-    if [ -f "$MINICONDA_HOME/etc/profile.d/conda.sh" ]; then
-      . "$MINICONDA_HOME/etc/profile.d/conda.sh"
-    else
-      export PATH="$MINICONDA_HOME/bin:$PATH"
-    fi
+    export PATH="$MINICONDA_HOME/bin:$PATH"
   fi
-  unset __conda_setup
-  # <<< conda initialize <<<
-  # activate base environment by default
+fi
+unset __conda_setup
+if command -v conda &>/dev/null; then
   conda activate base
 fi
 
@@ -130,3 +126,5 @@ eval "$(atuin init zsh)"
 # Temporarily disabling tmux as I am trying out zellij
 # if [ "$TMUX" = "" ]; then tmux -u; fi
 eval "$(zellij setup --generate-auto-start zsh)"
+
+. "$HOME/.local/share/../bin/env"
