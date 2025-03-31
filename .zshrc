@@ -107,7 +107,10 @@ eval "$(atuin init zsh)"
 
 # Temporarily disabling tmux as I am trying out zellij
 # if [ "$TMUX" = "" ]; then tmux -u; fi
-eval "$(zellij setup --generate-auto-start zsh)"
+if [[ -v VSCODE_INJECTION ]]; then
+else
+  eval "$(zellij setup --generate-auto-start zsh)"
+fi
 
 alias python=python3
 alias pip=pip3
