@@ -5,41 +5,29 @@ if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# bin
+export PATH=$PATH:$HOME/.local/bin
 
-ZSH_THEME="robbyrussell"
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-install_zsh_plugins() {
-  local ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
-  local plugins_to_install=(
-    "zsh-syntax-highlighting:https://github.com/zsh-users/zsh-syntax-highlighting.git"
-    "zsh-autosuggestions:https://github.com/zsh-users/zsh-autosuggestions.git"
-    "zsh-completions:https://github.com/zsh-users/zsh-completions.git"
-  )
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
 
-  for plugin_info in "${plugins_to_install[@]}"; do
-    local plugin_name="${plugin_info%%:*}"
-    local plugin_repo="${plugin_info#*:}"
-    local PLUGIN_DIR="$ZSH_CUSTOM/plugins/$plugin_name"
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
 
-    # Check if the plugin directory exists
-    if [[ ! -d "$PLUGIN_DIR" ]]; then
-      echo "$plugin_name is not installed. Installing now..."
+# Add in Powerlevel10k
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 
-      # Clone the repository
-      git clone "$plugin_repo" "$PLUGIN_DIR" || {
-        echo "Failed to clone $plugin_name repository."
-        continue
-      }
-
-      echo "$plugin_name installed successfully!"
-    fi
-  done
-  return 0
-}
-
-install_zsh_plugins
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
 
 plugins=(
   git
@@ -49,7 +37,10 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
+if [[ -v VSCODE_INJECTION ]]; then
+else
+  eval "$(zellij setup --generate-auto-start zsh)"
+fi
 
 # NVM Setup
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -84,9 +75,6 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-# bin
-export PATH=$PATH:$HOME/.local/bin
-
 # use eza for ls
 if command -v eza &>/dev/null; then
   alias ls='eza --icons=always --color=always --long'
@@ -115,27 +103,14 @@ source <(fzf --zsh)
 export FZF_CTRL_T_COMMAND=
 export FZF_ALT_C_COMMAND=
 
-# sst
-export PATH=$PATH:$HOME/.sst/bin
-
 # kubectl
 export KUBE_EDITOR=nvim
-
-# nix shell
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 
 # atuin setup
 if [ -d $HOME/.atuin ]; then . $HOME/.atuin/bin/env; fi
 eval "$(atuin init zsh)"
 
-# Temporarily disabling tmux as I am trying out zellij
-# if [ "$TMUX" = "" ]; then tmux -u; fi
-if [[ -v VSCODE_INJECTION ]]; then
-else
-  eval "$(zellij setup --generate-auto-start zsh)"
-fi
-
+# Python
 alias python=python3
 alias pip=pip3
 alias uvr="uv run"
-. "$HOME/.local/share/../bin/env"
