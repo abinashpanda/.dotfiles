@@ -28,24 +28,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# >>> conda initialize >>>
-export MINICONDA_HOME=$HOME/miniconda3
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$MINICONDA_HOME/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-if [ $? -eq 0 ]; then
-  eval "$__conda_setup"
-else
-  if [ -f "$MINICONDA_HOME/etc/profile.d/conda.sh" ]; then
-    . "$MINICONDA_HOME/etc/profile.d/conda.sh"
-  else
-    export PATH="$MINICONDA_HOME/bin:$PATH"
-  fi
-fi
-unset __conda_setup
-if command -v conda &>/dev/null; then
-  conda activate base
-fi
-
 # NVM Setup
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -127,4 +109,6 @@ eval "$(atuin init zsh)"
 # if [ "$TMUX" = "" ]; then tmux -u; fi
 eval "$(zellij setup --generate-auto-start zsh)"
 
+alias python=python3
+alias pip=pip3
 . "$HOME/.local/share/../bin/env"
