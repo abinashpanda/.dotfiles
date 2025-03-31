@@ -114,4 +114,5 @@ fi
 
 alias python=python3
 alias pip=pip3
+alias uvr="uv run"
 . "$HOME/.local/share/../bin/env"
