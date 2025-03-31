@@ -10,20 +10,43 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-# Download Znap, if it's not there yet.
-[[ -f ~/Git/zsh-snap/znap.zsh ]] ||
-  git clone --depth 1 -- \
-    https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
+install_zsh_plugins() {
+  local ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
+  local plugins_to_install=(
+    "zsh-syntax-highlighting:https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    "zsh-autosuggestions:https://github.com/zsh-users/zsh-autosuggestions.git"
+    "zsh-completions:https://github.com/zsh-users/zsh-completions.git"
+  )
 
-source ~/Git/zsh-snap/znap.zsh # Start Znap
+  for plugin_info in "${plugins_to_install[@]}"; do
+    local plugin_name="${plugin_info%%:*}"
+    local plugin_repo="${plugin_info#*:}"
+    local PLUGIN_DIR="$ZSH_CUSTOM/plugins/$plugin_name"
 
-# `znap source` automatically downloads and starts your plugins.
-znap source zsh-users/zsh-syntax-highlighting
-znap source zsh-users/zsh-autosuggestions
+    # Check if the plugin directory exists
+    if [[ ! -d "$PLUGIN_DIR" ]]; then
+      echo "$plugin_name is not installed. Installing now..."
+
+      # Clone the repository
+      git clone "$plugin_repo" "$PLUGIN_DIR" || {
+        echo "Failed to clone $plugin_name repository."
+        continue
+      }
+
+      echo "$plugin_name installed successfully!"
+    fi
+  done
+  return 0
+}
+
+install_zsh_plugins
 
 plugins=(
   git
   colored-man-pages
+  zsh-completions
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
