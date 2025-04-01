@@ -10,7 +10,6 @@ formulae=(
   "lazydocker"
   "neovim"
   "ripgrep"
-  "tmux"
   "xh"
   "zoxide"
   "atuin"
