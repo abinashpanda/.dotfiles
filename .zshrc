@@ -1,8 +1,3 @@
-# brew
-if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
 if [[ -v VSCODE_INJECTION ]]; then
 else
   eval "$(zellij setup --generate-auto-start zsh)"
@@ -37,6 +32,12 @@ zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+
+# brew
+if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 
 # NVM Setup
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
