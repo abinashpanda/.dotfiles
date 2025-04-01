@@ -1,6 +1,7 @@
 #!/bin/bash
 
 formulae=(
+  "jandedobbeleer/oh-my-posh/oh-my-posh"
   "bat"
   "caddy"
   "eza"
