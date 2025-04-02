@@ -100,7 +100,7 @@ alias pip=pip3
 alias uvr="uv run"
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config=$XDG_CONFIG_HOME/oh-my-posh/config.toml)"
+  eval "$(oh-my-posh init zsh --config=$XDG_CONFIG_HOME/oh-my-posh/config.json)"
 fi
 
 if [[ -v VSCODE_INJECTION ]]; then
