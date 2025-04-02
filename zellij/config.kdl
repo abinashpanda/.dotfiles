@@ -241,7 +241,6 @@ keybinds clear-defaults=true {
 // Plugin aliases - can be used to change the implementation of Zellij
 // changing these requires a restart to take effect
 plugins {
-    about location="zellij:about"
     compact-bar location="zellij:compact-bar"
     configuration location="zellij:configuration"
     filepicker location="zellij:strider" {
@@ -252,9 +251,6 @@ plugins {
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
     tab-bar location="zellij:tab-bar"
-    welcome-screen location="zellij:session-manager" {
-        welcome_screen true
-    }
 }
 
 // Plugins to load in the background when a new session starts
@@ -268,12 +264,13 @@ load_plugins {
 //   - true
 //   - false (Default)
 // 
-// simplified_ui true
+simplified_ui false
+
  
 // Choose the theme that is specified in the themes section.
 // Default: default
-// 
 theme "catppuccin-macchiato"
+
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -289,15 +286,12 @@ theme "catppuccin-macchiato"
 // 
 // default_cwd "/tmp"
  
-// The name of the default layout to load on startup
-// Default: "default"
-// 
-// default_layout "compact"
- 
+
 // The folder in which Zellij will look for layouts
 // (Requires restart)
 // 
 // layout_dir "/tmp"
+default_layout "my-layout"
  
 // The folder in which Zellij will look for themes
 // (Requires restart)
@@ -318,7 +312,7 @@ theme "catppuccin-macchiato"
 //   - true (default, enabled)
 //   - false
 // 
-// pane_frames false
+pane_frames false
  
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
