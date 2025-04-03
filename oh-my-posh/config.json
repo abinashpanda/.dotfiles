@@ -15,28 +15,21 @@
       "alignment": "left",
       "segments": [
         {
-          "background": "p:plum",
-          "foreground": "p:white",
-          "leading_diamond": "\ue0b6",
-          "style": "diamond",
-          "template": "{{ .UserName }} ",
-          "type": "session"
-        },
-        {
           "background": "p:blush",
           "foreground": "p:white",
+          "leading_diamond": "\ue0b6",
           "powerline_symbol": "\ue0b0",
           "properties": {
             "folder_icon": "..\ue5fe..",
             "home_icon": "~",
             "style": "agnoster_short"
           },
-          "style": "powerline",
+          "style": "diamond",
           "template": " {{ .Path }} ",
           "type": "path"
         },
         {
-          "background": "p:teal_blue",
+          "background": "p:teal",
           "foreground": "p:white",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
