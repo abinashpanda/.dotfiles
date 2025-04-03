@@ -15,21 +15,6 @@
       "alignment": "left",
       "segments": [
         {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "foreground": "p:white",
-          "background": "p:teal",
-          "template": "{{.Icon}} ",
-          "type": "os"
-        }
-      ],
-      "type": "rprompt"
-    },
-    {
-      "alignment": "left",
-      "segments": [
-        {
           "background": "p:plum",
           "foreground": "p:white",
           "leading_diamond": "\ue0b6",
