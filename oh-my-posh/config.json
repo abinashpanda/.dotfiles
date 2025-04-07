@@ -1,22 +1,18 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
-    "white": "#FFFFFF",
-    "tan": "#CC3802",
-    "teal": "#047E84",
-    "plum": "#9A348E",
-    "blush": "#DA627D",
-    "salmon": "#FCA17D",
-    "sky": "#86BBD8",
-    "teal_blue": "#33658A"
+    "black": "#000000",
+    "pink": "#F5C2E7",
+    "lavender": "#B4BEFE",
+    "blue":  "#89B4FA"
   },
   "blocks": [
     {
       "alignment": "left",
       "segments": [
         {
-          "background": "p:blush",
-          "foreground": "p:white",
+          "background": "p:pink",
+          "foreground": "p:black",
           "leading_diamond": "\ue0b6",
           "powerline_symbol": "\ue0b0",
           "properties": {
@@ -29,8 +25,8 @@
           "type": "path"
         },
         {
-          "background": "p:teal",
-          "foreground": "p:white",
+          "background": "p:blue",
+          "foreground": "p:black",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
           "properties": {

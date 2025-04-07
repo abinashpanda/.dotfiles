@@ -264,12 +264,12 @@ load_plugins {
 //   - true
 //   - false (Default)
 // 
-simplified_ui false
+simplified_ui true
 
  
 // Choose the theme that is specified in the themes section.
 // Default: default
-theme "catppuccin-mocha"
+theme "catppuccin-custom"
 
  
 // Choose the base input mode of zellij.
@@ -291,7 +291,7 @@ theme "catppuccin-mocha"
 // (Requires restart)
 // 
 // layout_dir "/tmp"
-default_layout "my-layout"
+// default_layout "my-layout"
  
 // The folder in which Zellij will look for themes
 // (Requires restart)
