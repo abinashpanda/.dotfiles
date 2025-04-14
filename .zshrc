@@ -107,3 +107,8 @@ if [[ -v VSCODE_INJECTION ]]; then
 else
   eval "$(zellij setup --generate-auto-start zsh)"
 fi
+
+PROJECTS_HOME=$HOME/Projects/typescript-go
+if [ -d "$PROJECTS_HOME" ]; then
+  export PATH=$PATH:$PROJECTS_HOME/built/local
+fi
