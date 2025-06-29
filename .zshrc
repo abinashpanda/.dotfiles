@@ -37,9 +37,8 @@ esac
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+# bun completions
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
-# completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # Deno
 if [ -d $HOME/.deno ]; then . $HOME/.deno/env; fi
@@ -48,7 +47,7 @@ if [ -d $HOME/.deno ]; then . $HOME/.deno/env; fi
 case "$(uname -s)" in
 Linux)
   # Set JAVA_HOME for Linux
-  export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
+  export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
   ;;
 Darwin)
   # Set JAVA_HOME for macOS
@@ -108,7 +107,28 @@ else
   eval "$(zellij setup --generate-auto-start zsh)"
 fi
 
-PROJECTS_HOME=$HOME/Projects/typescript-go
-if [ -d "$PROJECTS_HOME" ]; then
-  export PATH=$PATH:$PROJECTS_HOME/built/local
+TS_NATIVE_PROJECT_HOME=$HOME/Projects/typescript-go
+if [ -d "$TS_NATIVE_PROJECT_HOME" ]; then
+  export PATH=$PATH:$TS_NATIVE_PROJECT_HOME/built/local
 fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$($HOME, '/miniconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+if [ $? -eq 0 ]; then
+  eval "$__conda_setup"
+else
+  if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+    . "$HOME/miniconda3/etc/profile.d/conda.sh"
+  else
+    export PATH="/home/abinash/miniconda3/bin:$PATH"
+  fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# Cuda
+export CUDA_HOME=/usr/local/cuda
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+export PATH=$PATH:$CUDA_HOME/bin
+
