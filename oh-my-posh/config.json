@@ -34,6 +34,12 @@
           "style": "plain",
           "template": "\uf119  ",
           "type": "status"
+        },
+        {
+          "type": "python",
+          "style": "powerline",
+          "template": " :({{.Venv}}|{{.Full}}) ",
+          "foreground": "#56B6C2"
         }
       ],
       "type": "prompt"
