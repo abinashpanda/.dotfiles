@@ -1,5 +1,5 @@
-adjust-cell-height = 40%
+adjust-cell-height = 50%
 font-size = 11
-theme = Afterglow
+theme = carbonfox
 background-opacity = 0.95
-font-family = "BlexMono Nerd Font Text"
+font-family = "0xProto Nerd Font"
