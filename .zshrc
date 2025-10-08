@@ -94,10 +94,6 @@ export KUBE_EDITOR=nvim
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:/usr/local/go/bin
 
-# Python
-alias python=python3
-alias pip=pip3
-alias uvr="uv run"
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config=$XDG_CONFIG_HOME/oh-my-posh/config.json)"
@@ -122,7 +118,7 @@ else
   if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
     . "$HOME/miniconda3/etc/profile.d/conda.sh"
   else
-    export PATH="/home/abinash/miniconda3/bin:$PATH"
+    export PATH="$HOME/miniconda3/bin:$PATH"
   fi
 fi
 unset __conda_setup
@@ -136,3 +132,18 @@ export PATH=$PATH:$CUDA_HOME/bin
 
 # opencode
 export PATH=$HOME/.opencode/bin:$PATH
+
+# uv Setup
+export PATH=$HOME/.local/bin:$PATH
+alias uvr="uv run"
+
+# sst
+export PATH=$HOME/.sst/bin:$PATH
+
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin
+
+# bun run alias
+alias brb="bun run --bun build"
+alias brc="bun run --compile build"
+alias brd="bun run --bun dev"
