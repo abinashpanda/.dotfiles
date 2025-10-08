@@ -269,7 +269,7 @@ simplified_ui true
  
 // Choose the theme that is specified in the themes section.
 // Default: default
-theme "dracula"
+theme "kanagawa"
 
  
 // Choose the base input mode of zellij.
@@ -448,3 +448,4 @@ show_startup_tips false
 // Default: true
 // 
 // show_release_notes false
+
