@@ -95,9 +95,11 @@ export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:/usr/local/go/bin
 
 
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config=$XDG_CONFIG_HOME/oh-my-posh/config.json)"
-fi
+# if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+#   eval "$(oh-my-posh init zsh --config=$XDG_CONFIG_HOME/oh-my-posh/config.json)"
+# fi
+
+eval "$(starship init zsh)"
 
 if [[ -v VSCODE_INJECTION ]]; then
 else
