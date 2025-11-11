@@ -1,3 +1,8 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # bin
 export PATH=$PATH:$HOME/.local/bin
 export XDG_CONFIG_HOME=$HOME/.config
@@ -149,3 +154,4 @@ export PATH=$PATH:$HOME/.pulumi/bin
 alias brb="bun run --bun build"
 alias brc="bun run --compile build"
 alias brd="bun run --bun dev"
+. "$HOME/.deno/env"
