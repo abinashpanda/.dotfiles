@@ -94,15 +94,14 @@ eval "$(atuin init zsh)"
 
 # kubectl
 export KUBE_EDITOR=nvim
+if command -v kubectl &>/dev/null; then
+  source <(kubectl completion zsh)
+fi
+export PATH=${KREW_ROOT:-$HOME/.krew}/bin:$PATH
 
 # Go
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:/usr/local/go/bin
-
-
-# if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-#   eval "$(oh-my-posh init zsh --config=$XDG_CONFIG_HOME/oh-my-posh/config.json)"
-# fi
 
 eval "$(starship init zsh)"
 
@@ -135,7 +134,6 @@ unset __conda_setup
 export CUDA_HOME=/usr/local/cuda
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
 export PATH=$PATH:$CUDA_HOME/bin
-
 
 # opencode
 export PATH=$HOME/.opencode/bin:$PATH
