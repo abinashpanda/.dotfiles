@@ -1,3 +1,5 @@
+export TERM=xterm-256color
+
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 export LC_ALL=en_US.UTF-8
