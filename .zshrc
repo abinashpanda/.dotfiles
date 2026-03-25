@@ -91,7 +91,7 @@ if command -v fzf &>/dev/null; then
 fi
 
 # atuin setup
-if [ -d $HOME/.atuin ]; then . $HOME/.atuin/bin/env; fi
+if [ -d $HOME/.atuin/bin/env ]; then . $HOME/.atuin/bin/env; fi
 eval "$(atuin init zsh)"
 
 # kubectl
