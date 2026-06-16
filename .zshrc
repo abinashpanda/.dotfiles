@@ -91,7 +91,7 @@ if command -v fzf &>/dev/null; then
 fi
 
 # atuin setup
-if [ -d $HOME/.atuin ]; then . $HOME/.atuin/bin/env; fi
+if [ -d $HOME/.atuin/bin/env ]; then . $HOME/.atuin/bin/env; fi
 eval "$(atuin init zsh)"
 
 # kubectl
@@ -154,5 +154,10 @@ export PATH=$PATH:$HOME/.pulumi/bin
 alias brb="bun run --bun build"
 alias brc="bun run --compile build"
 alias brd="bun run --bun dev"
+alias bh="bun run --bun lint && bun run --bun typecheck && bun run --bun format"
 
 alias id="infisical run --env=dev --"
+
+if [ -d $HOME/google-cloud-sdk/bin ]; then
+  export PATH=$PATH:$HOME/google-cloud-sdk/bin
+fi
