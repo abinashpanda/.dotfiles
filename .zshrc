@@ -161,3 +161,6 @@ alias id="infisical run --env=dev --"
 if [ -d $HOME/google-cloud-sdk/bin ]; then
   export PATH=$PATH:$HOME/google-cloud-sdk/bin
 fi
+
+# nub
+export PATH="$HOME/.nub/bin:$PATH"
