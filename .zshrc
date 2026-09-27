@@ -164,3 +164,6 @@ fi
 
 # nub
 export PATH="$HOME/.nub/bin:$PATH"
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"
