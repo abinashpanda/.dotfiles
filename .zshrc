@@ -154,10 +154,14 @@ export PATH=$PATH:$HOME/.pulumi/bin
 alias brb="bun run --bun build"
 alias brc="bun run --compile build"
 alias brd="bun run --bun dev"
-alias bh="bun run lint && bun run typecheck && bun run format"
-alias bht="bun run lint && bun run typecheck && bun run format && bun run test"
+alias bh="bun run --bun lint && bun run --bun typecheck && bun run --bun format"
+alias bht="bun run --bun lint && bun run --bun typecheck && bun run --bun format && bun run --bun test"
 
 alias id="infisical run --env=dev --"
+
+if [ -d $HOME/google-cloud-sdk/bin ]; then
+  export PATH=$PATH:$HOME/google-cloud-sdk/bin
+fi
 
 # nub
 export PATH="$HOME/.nub/bin:$PATH"
