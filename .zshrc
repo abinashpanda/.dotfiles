@@ -107,7 +107,7 @@ export PATH=$PATH:/usr/local/go/bin
 
 eval "$(starship init zsh)"
 
-if [[ -v VSCODE_INJECTION ]]; then
+if [[ -v VSCODE_INJECTION || -n "$ZELLIJ" || "${HERDR_ENV:-}" == 1 || -n "$SSH_CONNECTION" || -n "$SSH_TTY" || -n "$MOSH_CONNECTION" || -n "$MOSH_TTY" ]]; then
 else
   eval "$(zellij setup --generate-auto-start zsh)"
 fi
@@ -154,5 +154,19 @@ export PATH=$PATH:$HOME/.pulumi/bin
 alias brb="bun run --bun build"
 alias brc="bun run --compile build"
 alias brd="bun run --bun dev"
+alias bh="bun run lint && bun run typecheck && bun run format"
+alias bht="bun run lint && bun run typecheck && bun run format && bun run test"
 
 alias id="infisical run --env=dev --"
+
+# nub
+export PATH="$HOME/.nub/bin:$PATH"
+
+# Vite+ bin (https://viteplus.dev)
+if [ -r "$HOME/.vite-plus/env" ]; then
+  . "$HOME/.vite-plus/env"
+fi
+
+if command -v aria2c &>/dev/null; then
+  alias download='aria2c -x 16 -s 16 -k 1M --continue=true --max-connection-per-server=16 --split=16 --min-split-size=1M'
+fi
