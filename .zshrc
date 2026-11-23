@@ -107,7 +107,7 @@ export PATH=$PATH:/usr/local/go/bin
 
 eval "$(starship init zsh)"
 
-if [[ -v VSCODE_INJECTION || -n "$ZELLIJ" || "${HERDR_ENV:-}" == 1 || -n "$SSH_CONNECTION" || -n "$SSH_TTY" || -n "$MOSH_CONNECTION" || -n "$MOSH_TTY" ]]; then
+if [[ -v VSCODE_INJECTION || -n "$ZELLIJ" || "${HERDR_ENV:-}" == 1 || -n "${HC_TERMINAL_SOCKET:-}" || -n "${HC_SCOPE:-}" || "$PWD" == *"/herder-app"* || -n "$SSH_CONNECTION" || -n "$SSH_TTY" || -n "$MOSH_CONNECTION" || -n "$MOSH_TTY" ]]; then
 else
   eval "$(zellij setup --generate-auto-start zsh)"
 fi
